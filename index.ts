@@ -43,7 +43,7 @@ const alertOnZero$ = (action) => {
 };
 
 const effect$ = effectSubject.asObservable().pipe(
-  mergeMap((action) => merge(alertOnZero$(action))),
+  concatMap((action) => merge(alertOnZero$(action))),
   tap(a => actionSubject.next(a))
 );
 
